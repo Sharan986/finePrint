@@ -1,6 +1,6 @@
 import { auth } from "./firebase";
 
-const API_BASE_URL = "https://labelspy-latest.onrender.com/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://labelspy-latest.onrender.com/api";
 
 // Retry delay for when backend is waking up (Render free tier)
 const RETRY_DELAYS = [0, 2000, 5000]; // Retry after 2s, then 5s

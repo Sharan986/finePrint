@@ -2,13 +2,13 @@ import { initializeApp, getApps } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCBOIGCU4813WYDydqP79mGStmKM98tNBk",
-  authDomain: "labelspy-2ce10.firebaseapp.com",
-  projectId: "labelspy-2ce10",
-  storageBucket: "labelspy-2ce10.firebasestorage.app",
-  messagingSenderId: "1009440421534",
-  appId: "1:1009440421534:web:8049278abe4690cbeaed8f",
-  measurementId: "G-1R1S3YH2JL"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase only if not already initialized
