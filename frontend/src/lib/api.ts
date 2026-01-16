@@ -46,10 +46,15 @@ export interface UserProfile {
  */
 async function getAuthToken(): Promise<string | null> {
   const user = auth.currentUser;
-  if (!user) return null;
+  if (!user) {
+    console.warn("No user logged in - request will be unauthenticated");
+    return null;
+  }
   
   try {
-    return await user.getIdToken();
+    const token = await user.getIdToken();
+    console.log("Got Firebase token:", token ? "✓" : "✗");
+    return token;
   } catch (error) {
     console.error("Error getting auth token:", error);
     return null;
