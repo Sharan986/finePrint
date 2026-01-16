@@ -122,8 +122,6 @@ public class FirestoreService {
         }
     }
 
-
-
     public void addScanHistory(String userId, AnalysisResult result) {
         try {
             firestore.runTransaction((Transaction.Function<Void>) transaction -> {
