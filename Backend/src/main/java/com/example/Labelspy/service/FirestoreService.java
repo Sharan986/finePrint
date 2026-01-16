@@ -61,8 +61,6 @@ public class FirestoreService {
             throw new RuntimeException("Failed to delete user", e);
         }
     }
-
-
     public void incrementIngredientCounts(String userId, AnalysisResult analysisResult) {
         try {
             firestore.runTransaction((Transaction.Function<Void>) transaction -> {
