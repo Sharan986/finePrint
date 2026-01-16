@@ -33,3 +33,5 @@ build/
 .vscode/
 *.idea
 *.env
+.idea/
+Backend/src/main/resources/firebase-credentials.json
