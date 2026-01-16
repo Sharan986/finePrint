@@ -387,7 +387,7 @@ export default function ScanSection({ onScanComplete }: ScanSectionProps) {
 
                 {/* Action Buttons */}
                 {!isProcessing && (
-                  <div className="p-6 border-t border-white/10">
+                  <div className="p-4 sm:p-6 border-t border-white/10">
                     {error && (
                       <div className="flex items-start gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-xl mb-4">
                         <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
@@ -398,21 +398,21 @@ export default function ScanSection({ onScanComplete }: ScanSectionProps) {
                       </div>
                     )}
 
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <Button
                         variant="outline"
                         onClick={clearImage}
-                        className="flex-1 border-white/20 bg-white/5 hover:bg-white/10 text-white py-5"
+                        className="flex-1 border-white/20 bg-white/5 hover:bg-white/10 text-white py-5 min-w-0"
                       >
-                        <RotateCcw className="w-4 h-4 mr-2" />
-                        Choose Different
+                        <RotateCcw className="w-4 h-4 mr-2 shrink-0" />
+                        <span className="truncate">Choose Different</span>
                       </Button>
                       <Button
                         onClick={handleScan}
-                        className="flex-1 bg-cyan-500 hover:bg-cyan-400 text-black font-medium py-5"
+                        className="flex-1 bg-cyan-500 hover:bg-cyan-400 text-black font-medium py-5 min-w-0"
                       >
-                        <Scan className="w-4 h-4 mr-2" />
-                        Analyze Label
+                        <Scan className="w-4 h-4 mr-2 shrink-0" />
+                        <span className="truncate">Analyze Label</span>
                       </Button>
                     </div>
                   </div>
