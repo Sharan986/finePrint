@@ -128,53 +128,53 @@ export default function DashboardPage() {
         )}
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
           <div className="bg-zinc-900/50 border border-white/10 rounded-2xl p-4">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center justify-between mb-3">
               <div className="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center">
                 <Camera className="w-5 h-5 text-cyan-400" />
               </div>
             </div>
-            <div className="text-2xl font-bold text-white">
-              {dataLoading ? "..." : totalScans}
+            <div className="text-2xl md:text-3xl font-bold text-white">
+              {dataLoading ? "—" : totalScans}
             </div>
-            <div className="text-sm text-white/50">Total Scans</div>
+            <div className="text-xs md:text-sm text-white/50 mt-1">Total Scans</div>
           </div>
           
           <div className="bg-zinc-900/50 border border-white/10 rounded-2xl p-4">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center justify-between mb-3">
               <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center">
                 <TrendingUp className="w-5 h-5 text-green-400" />
               </div>
             </div>
-            <div className="text-2xl font-bold text-white">
-              {dataLoading ? "..." : topIngredients.length}
+            <div className="text-2xl md:text-3xl font-bold text-white">
+              {dataLoading ? "—" : topIngredients.length}
             </div>
-            <div className="text-sm text-white/50">Unique Ingredients</div>
+            <div className="text-xs md:text-sm text-white/50 mt-1">Ingredients Found</div>
           </div>
           
           <div className="bg-zinc-900/50 border border-white/10 rounded-2xl p-4">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center justify-between mb-3">
               <div className="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
                 <AlertTriangle className="w-5 h-5 text-orange-400" />
               </div>
             </div>
-            <div className="text-2xl font-bold text-white">
-              {dataLoading ? "..." : (topIngredients[0]?.count || 0)}
+            <div className="text-2xl md:text-3xl font-bold text-white">
+              {dataLoading ? "—" : (topIngredients[0]?.count || 0)}
             </div>
-            <div className="text-sm text-white/50">Top Ingredient Count</div>
+            <div className="text-xs md:text-sm text-white/50 mt-1">Most Common</div>
           </div>
           
           <div className="bg-zinc-900/50 border border-white/10 rounded-2xl p-4">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center justify-between mb-3">
               <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
                 <History className="w-5 h-5 text-purple-400" />
               </div>
             </div>
-            <div className="text-2xl font-bold text-white">
-              {dataLoading ? "..." : thisWeekScans}
+            <div className="text-2xl md:text-3xl font-bold text-white">
+              {dataLoading ? "—" : thisWeekScans}
             </div>
-            <div className="text-sm text-white/50">This Week</div>
+            <div className="text-xs md:text-sm text-white/50 mt-1">This Week</div>
           </div>
         </div>
 
