@@ -20,7 +20,6 @@ public class FirebaseAuthInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
             return true;
         }
@@ -31,16 +30,23 @@ public class FirebaseAuthInterceptor implements HandlerInterceptor {
         }
 
         String authHeader = request.getHeader("Authorization");
+        boolean isScanPath = path.equals("/api/scan");
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            sendError(response, HttpServletResponse.SC_UNAUTHORIZED,
-                    "Missing or invalid Authorization header");
-            return false;
+            if (isScanPath) {
+                // optional auth for scan endpoint
+                log.info("No auth header for scan; proceeding unauthenticated");
+                return true;
+            } else {
+                sendError(response, HttpServletResponse.SC_UNAUTHORIZED,
+                        "Missing or invalid Authorization header");
+                return false;
+            }
         }
 
         String idToken = authHeader.substring(7);
 
         try {
-
             String userId = firebaseAuthService.getUserId(idToken);
             String email = firebaseAuthService.getUserEmail(idToken);
 
@@ -52,9 +58,14 @@ public class FirebaseAuthInterceptor implements HandlerInterceptor {
             return true;
         } catch (FirebaseAuthException e) {
             log.warn("Firebase authentication failed: {}", e.getMessage());
-            sendError(response, HttpServletResponse.SC_UNAUTHORIZED,
-                    "Invalid or expired token: " + e.getMessage());
-            return false;
+            if (isScanPath) {
+                log.debug("Invalid token for scan; proceeding unauthenticated");
+                return true;
+            } else {
+                sendError(response, HttpServletResponse.SC_UNAUTHORIZED,
+                        "Invalid or expired token: " + e.getMessage());
+                return false;
+            }
         }
     }
 

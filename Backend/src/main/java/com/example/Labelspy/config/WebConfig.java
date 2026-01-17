@@ -17,7 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(firebaseAuthInterceptor)
                 .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/health","/api/scan", "/api/public/**");
+                .excludePathPatterns("/api/health","/api/public/**");
     }
 
     @Override

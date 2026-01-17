@@ -1,5 +1,7 @@
 package com.example.Labelspy.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +23,9 @@ public class GeminiConfig {
     }
     @Bean
     public ObjectMapper objectMapper() {
-        return new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());  // Enables LocalDateTime serialization (defaults to ISO-8601 format)
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);  // Optional: Ensures dates are strings, not timestamps
+        return mapper;
     }
 }
